@@ -1,0 +1,8 @@
+/target/
+.idea
+*.iml
+allure-results/
+*.apk
+*.ipa
+*.app
+.DS_Store
