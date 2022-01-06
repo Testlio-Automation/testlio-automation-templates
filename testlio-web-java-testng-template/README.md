@@ -52,3 +52,4 @@ mvn clean test \
 ## Creating test package
 ```bash 
 mvn package -DskipTests
+```
