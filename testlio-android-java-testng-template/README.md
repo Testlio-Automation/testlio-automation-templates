@@ -1,4 +1,4 @@
-# Automated Web Testing using Java with Selenium, Appium and TestNG
+# Automated Android App Testing using Java with Selenium, Appium and TestNG
 
 ## Project structure
 - `src/main`
@@ -14,39 +14,14 @@
 
 ## Run tests locally
 
-### Desktop
 ```bash 
 mvn clean test \
   -Dprovider=local \
-  -Dexecution.type=web \
-  -Dbrowser.name=<browser name value>
-```
-
-Possible `-Dbrowser.name` values:
- - `chrome`
- - `firefox`
- - `MicrosoftEdge`
- - `"internet explorer"`
-
-### Android (Chrome)
-```bash 
-mvn clean test \
-  -Dprovider=local \
-  -Dexecution.type=mobile-web \
+  -Dexecution.type=mobile-native \
   -Dmobile.platform=android \
   -Dmobile.device.name=<your device name> \
-  -Dmobile.platform.version=<your device os version>
-```
-
-### iOS (Safari)
-```bash 
-mvn clean test \
-  -Dprovider=local \
-  -Dexecution.type=mobile-web \
-  -Dmobile.platform=ios \
-  -Dmobile.device.udid=<your device identifier> \
-  -Dmobile.device.name=<your device model name> \
-  -Dmobile.platform.version=<your device os version>
+  -Dmobile.platform.version=<your device os version> \
+  -Dmobile.app.path=<local path to apk>
 ```
 
 ## Creating test package
