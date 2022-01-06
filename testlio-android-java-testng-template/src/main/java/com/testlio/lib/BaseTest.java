@@ -72,9 +72,9 @@ public abstract class BaseTest {
 		int testNumberInOrder = properties().getTestMethodOrderNumberInThread().get();
 		LOG.info("Test number in order: " + testNumberInOrder);
 		if (testNumberInOrder != 1) {
-			int waitTime = properties().getTimeoutBetweenTestsValue();
+		    int waitTime = properties().getTimeoutBetweenTestsValue();
 			LOG.info("Waiting beetween tests: " + waitTime);
-			sleepInSeconds(waitTime);
+            sleepInSeconds(waitTime);
 		}
 	}
 
