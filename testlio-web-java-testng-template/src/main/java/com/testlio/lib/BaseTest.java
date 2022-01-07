@@ -33,10 +33,10 @@ public abstract class BaseTest {
 	@BeforeMethod(alwaysRun = true)
 	public void setUp(ITestContext context, Method method) {
 		driverProvider = getDriverProvider();
-		if (properties().isMobileExecution()) {
+		if (properties().isMobileNativeExecution()) {
 			mobileDriver = driverProvider.createDriver();
 		}
-		if (properties().isWebExecution()) {
+		if (properties().isWebExecution() || properties().isMobileWebExecution()) {
 			webDriver = driverProvider.createDriver();
 		}
 	}

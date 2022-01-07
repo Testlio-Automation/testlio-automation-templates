@@ -6,79 +6,69 @@ phases:
   # Default dependencies for testing frameworks supported on Device Farm are already installed.
   install:
     commands:
-      # This test execution environment uses Appium version 1.9.1 by default, however we enable you to change it using the Appium version manager (avm)
-      # An example "avm" command below changes the version to 1.19.0
-      # For your convenience, we have pre-installed the following Appium versions: 1.9.1, 1.10.1, 1.11.1, 1.12.1, 1.13.0, 1.14.1, 1.14.2, 1.15.1, 1.16.0, 1.17.1, 1.18.0, 1.18.1, 1.18.2, 1.18.3, and 1.19.0
-      # For iOS Devices on OS version 14.2 and above, please use Appium Version 1.19.0 or higher.
-      # For iOS devices on OS version 14.0 and above, please use Appium version 1.18.0 or higher.
-      # For iOS devices on OS version 13.4 through 13.7, please use Appium version 1.17.1 or higher.
-      # Additionally, for iOS devices on OS version 13.0 through 13.3, please use Appium version 1.16.0 or higher.
+      # This test execution environment uses Appium version 1.9.1 by default, however we enable you to change it using the Appium version manager (avm). An
+      # example "avm" command below changes the version to 1.14.2.
+      # For your convenience, we have preinstalled the following versions: 1.9.1, 1.10.1, 1.11.1, 1.12.1, 1.13.0, 1.14.1, 1.14.2, 1.15.1 or 1.16.0.
       # To use one of these Appium versions, change the version number in the "avm" command below to your desired version:
-      - export APPIUM_VERSION=1.19.0
+      - export APPIUM_VERSION=1.14.2
       - avm $APPIUM_VERSION
       - ln -s /usr/local/avm/versions/$APPIUM_VERSION/node_modules/.bin/appium  /usr/local/avm/versions/$APPIUM_VERSION/node_modules/appium/bin/appium.js
 
-      # Device farm provides different pre-built versions of WebDriverAgent, and each is suggested for different versions of Appium:
-      # DEVICEFARM_WDA_DERIVED_DATA_PATH_V6: this version is suggested for Appium 1.18.2, 1.18.3, and 1.19.0. V6 is built from the following source code: https://github.com/appium/WebDriverAgent/releases/tag/v2.20.8
-      # DEVICEFARM_WDA_DERIVED_DATA_PATH_V5: this version is suggested for Appium 1.18.0 and 1.18.1. V5 is built from the following source code: https://github.com/appium/WebDriverAgent/releases/tag/v2.20.2
-      # DEVICEFARM_WDA_DERIVED_DATA_PATH_V4: this version is suggested for Appium 1.17.1. V4 is built from the following source code: https://github.com/appium/WebDriverAgent/releases/tag/v2.14.1
-      # DEVICEFARM_WDA_DERIVED_DATA_PATH_V3: this version is suggested for Appium 1.16.0. V3 is built from the following source code: https://github.com/appium/WebDriverAgent/releases/tag/v2.3.2
-      # DEVICEFARM_WDA_DERIVED_DATA_PATH_V2: this version is suggested for Appium 1.15.1. V2 is built from the following source code: https://github.com/appium/WebDriverAgent/tree/v1.3.5
-      # DEVICEFARM_WDA_DERIVED_DATA_PATH_V1: this version is suggested for Appium 1.9.1 through 1.14.2. V1 is built from the following source code: https://github.com/appium/WebDriverAgent/tree/2dbbf917ec2e4707bae9260f701d43c82b55e1b9
+      # Device farm provides three different pre-built versions of WebDriverAgent, and each is suggested for different versions of Appium:
+      # DEVICEFARM_WDA_DERIVED_DATA_PATH_V2: this version is suggested for Appium 1.15.0 and higher. V2 is built from the following source code: https://github.com/appium/WebDriverAgent/tree/v1.3.5
+      # DEVICEFARM_WDA_DERIVED_DATA_PATH_V1: this version is suggested for Appium 1.9.1 through 1.15.0. V1 is built from the following source code: https://github.com/appium/WebDriverAgent/tree/2dbbf917ec2e4707bae9260f701d43c82b55e1b9
       # We will automatically configure your WebDriverAgent version based on your Appium version using the following code.
 
-      # For users of Appium versions 1.15.0 and higher, your Appium version requires that the UDID of the device not contain any "-" characters
-      # So, we will create a new environment variable of the UDID specifically for Appium based on your Appium version
+      # For users of Appium versions 1.15.0 and higher, your Appium version requires that your UDID of the device not contain any "-" characters
+      # So, we will create a new environment variable of your UDID specifically for Appium based on your Appium version
       - >-
-        if [ $(echo $APPIUM_VERSION | cut -d "." -f2) -ge 19 ];
+        if [ $(echo $APPIUM_VERSION | cut -d "." -f2) -ge 15 ];
         then
           DEVICEFARM_DEVICE_UDID_FOR_APPIUM=$(echo $DEVICEFARM_DEVICE_UDID | tr -d "-");
-          echo $DEVICEFARM_DEVICE_UDID_FOR_APPIUM;
-          DEVICEFARM_WDA_DERIVED_DATA_PATH=$DEVICEFARM_WDA_DERIVED_DATA_PATH_V6;
-        elif [ $(echo $APPIUM_VERSION | cut -d "." -f2) -ge 18 ];
-        then
-          DEVICEFARM_DEVICE_UDID_FOR_APPIUM=$(echo $DEVICEFARM_DEVICE_UDID | tr -d "-");
-          echo "Appium version greater than 18 detected"
-          DEVICEFARM_WDA_DERIVED_DATA_PATH=$DEVICEFARM_WDA_DERIVED_DATA_PATH_V5;
-        elif [ $(echo $APPIUM_VERSION | cut -d "." -f2) -ge 17 ];
-        then
-          DEVICEFARM_DEVICE_UDID_FOR_APPIUM=$(echo $DEVICEFARM_DEVICE_UDID | tr -d "-");
-          echo "Appium version greater than 18 detected"
-          DEVICEFARM_WDA_DERIVED_DATA_PATH=$DEVICEFARM_WDA_DERIVED_DATA_PATH_V4;
-        elif [ $(echo $APPIUM_VERSION | cut -d "." -f2) -ge 16 ];
-        then
-          DEVICEFARM_DEVICE_UDID_FOR_APPIUM=$(echo $DEVICEFARM_DEVICE_UDID | tr -d "-");
-          echo "Appium version greater than 18 detected"
-          DEVICEFARM_WDA_DERIVED_DATA_PATH=$DEVICEFARM_WDA_DERIVED_DATA_PATH_V3;
-        elif [ $(echo $APPIUM_VERSION | cut -d "." -f2) -ge 15 ];
-        then
-          DEVICEFARM_DEVICE_UDID_FOR_APPIUM=$(echo $DEVICEFARM_DEVICE_UDID | tr -d "-");
-          echo "Appium version greater than 18 detected"
           DEVICEFARM_WDA_DERIVED_DATA_PATH=$DEVICEFARM_WDA_DERIVED_DATA_PATH_V2;
         else
           DEVICEFARM_DEVICE_UDID_FOR_APPIUM=$DEVICEFARM_DEVICE_UDID;
           DEVICEFARM_WDA_DERIVED_DATA_PATH=$DEVICEFARM_WDA_DERIVED_DATA_PATH_V1;
         fi
 
-  # The pre-test phase includes commands that set up your test environment.
+  # The pre-test phase includes commands that setup your test environment.
   pre_test:
     commands:
-      - java -version
-      # Set up environment variables for java
+      # Setup environment variables for java
       - export CLASSPATH=$CLASSPATH:$DEVICEFARM_TESTNG_JAR
       - export CLASSPATH=$CLASSPATH:$DEVICEFARM_TEST_PACKAGE_PATH/*
       - export CLASSPATH=$CLASSPATH:$DEVICEFARM_TEST_PACKAGE_PATH/dependency-jars/*
-      # We recommend starting the appium server process in the background using the command below.
+
+      # We recommend starting appium server process in the background using the command below.
       # Appium server log will go to $DEVICEFARM_LOG_DIR directory.
       # The environment variables below will be auto-populated during run time.
-      - echo "Start appium server"
+
       - >-
-        appium --log-timestamp
+        if [ $DEVICEFARM_DEVICE_PLATFORM_NAME = "Android" ];
+        then
+        echo "Start appium server for android";
+        (appium --log-timestamp
+        --default-capabilities "{\"deviceName\": \"$DEVICEFARM_DEVICE_NAME\", \"platformName\":\"$DEVICEFARM_DEVICE_PLATFORM_NAME\",
+        \"app\":\"$DEVICEFARM_APP_PATH\", \"automationName\":\"UiAutomator2\", \"udid\":\"$DEVICEFARM_DEVICE_UDID\",
+        \"platformVersion\":\"$DEVICEFARM_DEVICE_OS_VERSION\", \"browserName\":\"Chrome\", \"chromedriverExecutable\":\"$DEVICEFARM_CHROMEDRIVER_EXECUTABLE\"}"
+        >> $DEVICEFARM_LOG_DIR/appiumlog.txt 2>&1 &);
+        fi
+
+      # For IOS, Device farm starts the ios-webkit-debug-proxy before starting the appium server.
+      # So don't start ios-webkit-debug-proxy in the yaml file.
+      # The default WDA used is at DEVICEFARM_WDA_DERIVED_DATA_PATH_V1 (Supports versions iOS 12 and below), it is using commit f865d3. See (https://github.com/appium/appium-xcuitest-driver/tree/f865d32e78a5a8a15469bee30ed2f985d378575d)
+      # If you need an older WDA version or need support for node modules, use the WDA at DEVICEFARM_WDA_DERIVED_DATA_PATH_V0. (This version does not suport iOS 12)
+
+      - >-
+        if [ $DEVICEFARM_DEVICE_PLATFORM_NAME = "iOS" ];
+        then
+        echo "Start appium server for iOS";
+        (appium --log-timestamp
         --default-capabilities "{\"usePrebuiltWDA\": true, \"derivedDataPath\":\"$DEVICEFARM_WDA_DERIVED_DATA_PATH\",
         \"deviceName\": \"$DEVICEFARM_DEVICE_NAME\", \"platformName\":\"$DEVICEFARM_DEVICE_PLATFORM_NAME\", \"app\":\"$DEVICEFARM_APP_PATH\",
-        \"automationName\":\"XCUITest\", \"udid\":\"$DEVICEFARM_DEVICE_UDID_FOR_APPIUM\", \"platformVersion\":\"$DEVICEFARM_DEVICE_OS_VERSION\",
-        \"showXcodeLog\":"true"}"
-        >> $DEVICEFARM_LOG_DIR/appiumlog.txt 2>&1 &
+        \"automationName\":\"XCUITest\", \"udid\":\"$DEVICEFARM_DEVICE_UDID_FOR_APPIUM\", \"platformVersion\":\"$DEVICEFARM_DEVICE_OS_VERSION\", \"browserName\":\"Safari\"}"
+        >> $DEVICEFARM_LOG_DIR/appiumlog.txt 2>&1 &);
+        fi
 
       - >-
         start_appium_timeout=0;
@@ -100,37 +90,25 @@ phases:
                 start_appium_timeout=$((start_appium_timeout+1));
             fi;
         done;
-  # The test phase includes commands that start your test suite execution.
+
+  # The test phase includes commands that run your test suite execution.
   test:
     commands:
       # Your test package is downloaded in $DEVICEFARM_TEST_PACKAGE_PATH so we first change directory to that path.
       - echo "Navigate to test package directory"
       - cd $DEVICEFARM_TEST_PACKAGE_PATH
 
-      - unzip *-tests.jar
-
       # By default, the following command is used by Device Farm to run your Appium TestNG test.
-      # Note : DeviceFarm is using the TestNG runner to run the TestNG tests.
       # The goal is to run to your tests jar file with all the dependencies jars in the CLASSPATH.
       # Alternatively, You may specify your customized command.
       # Note: For most use cases, the default command works fine.
       # Please refer "http://testng.org/doc/documentation-main.html#running-testng" for more options on running TestNG tests from the command line.
       - echo "Start Appium TestNG test"
-      - java -Dprovider=testlio -Dexecution.type="mobile-native" -Dmobile.platform=ios -Dappium.screenshots.dir=$DEVICEFARM_SCREENSHOT_PATH -Dallure.results.directory=$DEVICEFARM_LOG_DIR/allure-results org.testng.TestNG org.testng.TestNG -testjar *-tests.jar testng.xml -d $DEVICEFARM_LOG_DIR/test-output -verbose 10
-
-      # To run your tests with testng.xml file, use the following sequence:
-      # Note: you don't have to unzip your test jar unless you have xml file with custom name
-      # 1. Your testng.xml is inside the test jar after packaging step. Unzip it using commands:
-      # - echo "Unzipping TestNG tests jar"
-      # - unzip *-tests.jar
-      # 2. Run your TestSuite by specifying the unzipped testng.xml using commands:
-      # - echo "Start Appium TestNG test"
-      # - java org.testng.TestNG -d $DEVICEFARM_LOG_DIR/test-output testng.xml
+      - java -Dprovider=testlio -Dexecution.type=mobile-web -Dmobile.platform=$(echo "$DEVICEFARM_DEVICE_PLATFORM_NAME" | tr '[:upper:]' '[:lower:]') -Dappium.screenshots.dir=$DEVICEFARM_SCREENSHOT_PATH org.testng.TestNG -testjar *-tests.jar -d $DEVICEFARM_LOG_DIR/test-output -verbose 10
 
   # The post test phase includes commands that are run after your tests are executed.
   post_test:
     commands:
-      - cp -n -R ./test-output $DEVICEFARM_LOG_DIR
 
 # The artifacts phase lets you specify the location where your tests logs, device logs will be stored.
 # And also let you specify the location of your test logs and artifacts which you want to be collected by Device Farm.

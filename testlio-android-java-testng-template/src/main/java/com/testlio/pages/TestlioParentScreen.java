@@ -14,10 +14,10 @@ import static com.testlio.lib.pagefactory.TestlioPageFactory.initMobileElements;
 @Slf4j
 public abstract class TestlioParentScreen extends MobileScreen {
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Static Page')]")
+    @AndroidFindBy(xpath = "//*[@resource-id='static-page-tab']")
     private MobileElement staticPageTab;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Login')]")
+    @AndroidFindBy(xpath = "//*[@resource-id='login-tab']")
     private MobileElement loginTab;
 
     public TestlioParentScreen(AppiumDriver<WebElement> mobileDriver) {
