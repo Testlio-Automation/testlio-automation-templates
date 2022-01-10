@@ -14,23 +14,6 @@ phases:
       - avm $APPIUM_VERSION
       - ln -s /usr/local/avm/versions/$APPIUM_VERSION/node_modules/.bin/appium  /usr/local/avm/versions/$APPIUM_VERSION/node_modules/appium/bin/appium.js
 
-      # Device farm provides three different pre-built versions of WebDriverAgent, and each is suggested for different versions of Appium:
-      # DEVICEFARM_WDA_DERIVED_DATA_PATH_V2: this version is suggested for Appium 1.15.0 and higher. V2 is built from the following source code: https://github.com/appium/WebDriverAgent/tree/v1.3.5
-      # DEVICEFARM_WDA_DERIVED_DATA_PATH_V1: this version is suggested for Appium 1.9.1 through 1.15.0. V1 is built from the following source code: https://github.com/appium/WebDriverAgent/tree/2dbbf917ec2e4707bae9260f701d43c82b55e1b9
-      # We will automatically configure your WebDriverAgent version based on your Appium version using the following code.
-
-      # For users of Appium versions 1.15.0 and higher, your Appium version requires that your UDID of the device not contain any "-" characters
-      # So, we will create a new environment variable of your UDID specifically for Appium based on your Appium version
-      - >-
-        if [ $(echo $APPIUM_VERSION | cut -d "." -f2) -ge 15 ];
-        then
-          DEVICEFARM_DEVICE_UDID_FOR_APPIUM=$(echo $DEVICEFARM_DEVICE_UDID | tr -d "-");
-          DEVICEFARM_WDA_DERIVED_DATA_PATH=$DEVICEFARM_WDA_DERIVED_DATA_PATH_V2;
-        else
-          DEVICEFARM_DEVICE_UDID_FOR_APPIUM=$DEVICEFARM_DEVICE_UDID;
-          DEVICEFARM_WDA_DERIVED_DATA_PATH=$DEVICEFARM_WDA_DERIVED_DATA_PATH_V1;
-        fi
-
   # The pre-test phase includes commands that setup your test environment.
   pre_test:
     commands:
@@ -38,37 +21,16 @@ phases:
       - export CLASSPATH=$CLASSPATH:$DEVICEFARM_TESTNG_JAR
       - export CLASSPATH=$CLASSPATH:$DEVICEFARM_TEST_PACKAGE_PATH/*
       - export CLASSPATH=$CLASSPATH:$DEVICEFARM_TEST_PACKAGE_PATH/dependency-jars/*
-
       # We recommend starting appium server process in the background using the command below.
       # Appium server log will go to $DEVICEFARM_LOG_DIR directory.
       # The environment variables below will be auto-populated during run time.
-
+      - echo "Start appium server"
       - >-
-        if [ $DEVICEFARM_DEVICE_PLATFORM_NAME = "Android" ];
-        then
-        echo "Start appium server for android";
-        (appium --log-timestamp
+        appium --log-timestamp
         --default-capabilities "{\"deviceName\": \"$DEVICEFARM_DEVICE_NAME\", \"platformName\":\"$DEVICEFARM_DEVICE_PLATFORM_NAME\",
-        \"app\":\"$DEVICEFARM_APP_PATH\", \"automationName\":\"UiAutomator2\", \"udid\":\"$DEVICEFARM_DEVICE_UDID\",
-        \"platformVersion\":\"$DEVICEFARM_DEVICE_OS_VERSION\", \"browserName\":\"Chrome\", \"chromedriverExecutable\":\"$DEVICEFARM_CHROMEDRIVER_EXECUTABLE\"}"
-        >> $DEVICEFARM_LOG_DIR/appiumlog.txt 2>&1 &);
-        fi
-
-      # For IOS, Device farm starts the ios-webkit-debug-proxy before starting the appium server.
-      # So don't start ios-webkit-debug-proxy in the yaml file.
-      # The default WDA used is at DEVICEFARM_WDA_DERIVED_DATA_PATH_V1 (Supports versions iOS 12 and below), it is using commit f865d3. See (https://github.com/appium/appium-xcuitest-driver/tree/f865d32e78a5a8a15469bee30ed2f985d378575d)
-      # If you need an older WDA version or need support for node modules, use the WDA at DEVICEFARM_WDA_DERIVED_DATA_PATH_V0. (This version does not suport iOS 12)
-
-      - >-
-        if [ $DEVICEFARM_DEVICE_PLATFORM_NAME = "iOS" ];
-        then
-        echo "Start appium server for iOS";
-        (appium --log-timestamp
-        --default-capabilities "{\"usePrebuiltWDA\": true, \"derivedDataPath\":\"$DEVICEFARM_WDA_DERIVED_DATA_PATH\",
-        \"deviceName\": \"$DEVICEFARM_DEVICE_NAME\", \"platformName\":\"$DEVICEFARM_DEVICE_PLATFORM_NAME\", \"app\":\"$DEVICEFARM_APP_PATH\",
-        \"automationName\":\"XCUITest\", \"udid\":\"$DEVICEFARM_DEVICE_UDID_FOR_APPIUM\", \"platformVersion\":\"$DEVICEFARM_DEVICE_OS_VERSION\", \"browserName\":\"Safari\"}"
-        >> $DEVICEFARM_LOG_DIR/appiumlog.txt 2>&1 &);
-        fi
+        \"app\":\"$DEVICEFARM_APP_PATH\", \"udid\":\"$DEVICEFARM_DEVICE_UDID\", \"platformVersion\":\"$DEVICEFARM_DEVICE_OS_VERSION\",
+        \"chromedriverExecutable\":\"$DEVICEFARM_CHROMEDRIVER_EXECUTABLE\"}"
+        >> $DEVICEFARM_LOG_DIR/appiumlog.txt 2>&1 &
 
       - >-
         start_appium_timeout=0;
@@ -91,7 +53,7 @@ phases:
             fi;
         done;
 
-  # The test phase includes commands that run your test suite execution.
+  # The test phase includes commands that start your test suite execution.
   test:
     commands:
       # Your test package is downloaded in $DEVICEFARM_TEST_PACKAGE_PATH so we first change directory to that path.
@@ -104,9 +66,18 @@ phases:
       # Note: For most use cases, the default command works fine.
       # Please refer "http://testng.org/doc/documentation-main.html#running-testng" for more options on running TestNG tests from the command line.
       - echo "Start Appium TestNG test"
-      - java -Dprovider=testlio -Dexecution.type=mobile-web -Dmobile.platform=$(echo "$DEVICEFARM_DEVICE_PLATFORM_NAME" | tr '[:upper:]' '[:lower:]') -Dappium.screenshots.dir=$DEVICEFARM_SCREENSHOT_PATH org.testng.TestNG -testjar *-tests.jar -d $DEVICEFARM_LOG_DIR/test-output -verbose 10
+      - java -Dprovider=testlio -Dmobile.platform=android -Dexecution.type=mobile-native -Dtake.screenshots.on.annotated.steps=true -Dallure.results.directory=$DEVICEFARM_LOG_DIR/allure-results -Dappium.screenshots.dir=$DEVICEFARM_SCREENSHOT_PATH org.testng.TestNG -testjar *-tests.jar -d $DEVICEFARM_LOG_DIR/test-output -verbose 10
 
-  # The post test phase includes commands that are run after your tests are executed.
+      # To run your tests with testng.xml file, use the following sequence:
+      # Note: you don't have to unzip your test jar unless you have xml file with custom name
+      # 1. Your testng.xml is inside the test jar after packaging step. Unzip it using commands:
+      # - echo "Unzipping TestNG tests jar"
+      # - unzip *-tests.jar
+      # 2. Run your TestSuite by specifying the unzipped testng.xml using commands:
+      # - echo "Start Appium TestNG test"
+      # - java org.testng.TestNG -d $DEVICEFARM_LOG_DIR/test-output testng.xml
+
+  # The post test phase includes are commands that are run after your tests are executed.
   post_test:
     commands:
 

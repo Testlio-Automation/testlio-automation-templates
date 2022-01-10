@@ -23,7 +23,7 @@ public class TestlioLoginTest extends BaseTest {
 
         // Navigate to the initial web application page - TestlioLoginWebPage
         TestlioLoginWebPage testlioLoginWebPage =
-                (new TestlioLoginWebPage(webDriver))
+                (new TestlioLoginWebPage(getWebDriver()))
                         .navigateTo(PLATFORM_TESTLIO_QA, TestlioLoginWebPage.class);
 
         // Input user's email address
