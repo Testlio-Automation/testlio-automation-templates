@@ -8,6 +8,14 @@ import java.util.ResourceBundle;
 
 import static com.testlio.constants.WebAppUrls.PLATFORM_TESTLIO_QA;
 
+/**
+ * Before running/packaging this test, ensure,
+ * that you created credentials.properties file
+ * in directory src/test/resources with following content:
+ *
+ * user.email=<put your testlio account email>
+ * user.password=<put your testlio account password>
+ */
 public class TestlioLoginTest extends BaseTest {
 
     /**
