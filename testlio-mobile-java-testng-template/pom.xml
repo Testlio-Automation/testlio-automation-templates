@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.testlio</groupId>
-    <artifactId>testlio-android-java-testng-template</artifactId>
+    <artifactId>testlio-mobile-java-testng-template</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 

@@ -4,6 +4,7 @@
     <test name="test">
         <classes>
             <class name="com.testlio.tests.TestlioLoginTest"/>
+            <class name="com.testlio.tests.TestlioLoginTest1"/>
         </classes>
     </test>
 </suite>
