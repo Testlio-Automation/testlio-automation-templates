@@ -140,6 +140,22 @@ public class AutomationProperties {
     @Getter
     private boolean grantAutoPermissions = false;
 
+    @Property("mobile.app.use.new.wda")
+    @Getter
+    private boolean useNewWDA = false;
+
+    @Property("mobile.app.use.prebuilt.wda")
+    @Getter
+    private boolean usePrebuiltWDA = false;
+
+    @Property("mobile.app.no.reset")
+    @Getter
+    private boolean noReset = false;
+
+    @Property("mobile.app.full.reset")
+    @Getter
+    private boolean fullReset = true;
+
     @Property("appiumAutomationName")
     @Getter
     private String appiumAutomationName = "UiAutomator2";

@@ -17,14 +17,8 @@ import java.net.URL;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_ACTIVITY;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_PACKAGE;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS;
-import static io.appium.java_client.remote.IOSMobileCapabilityType.BUNDLE_ID;
-import static io.appium.java_client.remote.IOSMobileCapabilityType.WEB_DRIVER_AGENT_URL;
-import static io.appium.java_client.remote.MobileCapabilityType.APP;
-import static io.appium.java_client.remote.MobileCapabilityType.AUTOMATION_NAME;
-import static io.appium.java_client.remote.MobileCapabilityType.DEVICE_NAME;
-import static io.appium.java_client.remote.MobileCapabilityType.NEW_COMMAND_TIMEOUT;
-import static io.appium.java_client.remote.MobileCapabilityType.PLATFORM_VERSION;
-import static io.appium.java_client.remote.MobileCapabilityType.UDID;
+import static io.appium.java_client.remote.IOSMobileCapabilityType.*;
+import static io.appium.java_client.remote.MobileCapabilityType.*;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
 
 @Slf4j
@@ -78,12 +72,18 @@ public class LocalNativeMobileProvider extends MobileDriverProvider {
 		desiredCapabilities.setCapability(PLATFORM_VERSION, Execution.properties().getMobileDevicePlatformVersion());
 		desiredCapabilities.setCapability(DEVICE_NAME, Execution.properties().getMobileDeviceName());
 		desiredCapabilities.setCapability(APP, Execution.properties().getMobileAppPath());
+		desiredCapabilities.setCapability(UDID, Execution.properties().getMobileDeviceUdid());
 		desiredCapabilities.setCapability(AUTOMATION_NAME, "XCUITest");
 		desiredCapabilities.setCapability(NEW_COMMAND_TIMEOUT, "7200");
 		// Optional capabilities
-		desiredCapabilities.setCapability(UDID, Execution.properties().getMobileDeviceUdid());
 		desiredCapabilities.setCapability(BUNDLE_ID, Execution.properties().getAppBundleId());
 		desiredCapabilities.setCapability(WEB_DRIVER_AGENT_URL, Execution.properties().getWebDriverAgentUrl());
+		desiredCapabilities.setCapability(AUTO_GRANT_PERMISSIONS, Execution.properties().isGrantAutoPermissions());
+		desiredCapabilities.setCapability(USE_NEW_WDA, Execution.properties().isUseNewWDA());
+		desiredCapabilities.setCapability(USE_PREBUILT_WDA, Execution.properties().isUsePrebuiltWDA());
+		desiredCapabilities.setCapability(NO_RESET, Execution.properties().isNoReset());
+		desiredCapabilities.setCapability(FULL_RESET, Execution.properties().isFullReset());
+
 		return desiredCapabilities;
 	}
 	

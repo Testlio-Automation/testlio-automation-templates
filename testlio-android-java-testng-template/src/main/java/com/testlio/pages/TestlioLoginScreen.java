@@ -3,6 +3,7 @@ package com.testlio.pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -17,15 +18,19 @@ import static com.testlio.lib.pagefactory.TestlioPageFactory.initMobileElements;
 public class TestlioLoginScreen extends TestlioParentScreen {
 
     @AndroidFindBy(xpath = "//*[@resource-id='login-title']")
+    @iOSXCUITFindBy(accessibility = "login-title")
     private MobileElement title;
 
     @AndroidFindBy(xpath = "//android.widget.EditText[contains(@text, 'Username')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[contains(@value, 'Username')]")
     private MobileElement usernameInput;
 
     @AndroidFindBy(xpath = "//android.widget.EditText[contains(@text, 'Password')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField[contains(@value, 'Password')]")
     private MobileElement passwordInput;
 
     @AndroidFindBy(xpath = "//*[@resource-id='login-button']")
+    @iOSXCUITFindBy(accessibility = "login-button")
     private MobileElement loginButton;
 
     public TestlioLoginScreen(AppiumDriver<WebElement> mobileDriver) {

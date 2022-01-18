@@ -51,8 +51,6 @@ public class TestlioLoginTest extends BaseTest {
         // Check that login is successful
         assertThat(alertPopup.getTitleString()).isEqualTo(SUCCESSFUL_LOGIN_ALERT_TITLE);
 
-        // Click OK to close the alert
-        alertPopup.clickOk();
     }
 
 }
