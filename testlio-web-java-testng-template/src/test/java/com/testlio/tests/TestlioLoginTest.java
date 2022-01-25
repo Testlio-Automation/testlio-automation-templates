@@ -4,7 +4,6 @@ import com.testlio.lib.BaseTest;
 import com.testlio.pages.TestlioLoginWebPage;
 import org.testng.annotations.Test;
 
-import java.lang.reflect.Method;
 import java.util.ResourceBundle;
 
 import static com.testlio.constants.WebAppUrls.PLATFORM_TESTLIO_QA;
