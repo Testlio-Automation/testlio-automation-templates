@@ -17,6 +17,12 @@ import static com.testlio.lib.pagefactory.TestlioPageFactory.initMobileElements;
 @Slf4j
 public class TestlioLoginScreen extends TestlioParentScreen {
 
+    /**
+     * Describe mobile elements using selectors
+     * For Android selectors - use @AndroidFindBy annotation
+     * For iOS selectors - use @iOSXCUITFindBy annotation
+     */
+
     @AndroidFindBy(xpath = "//*[@resource-id='login-title']")
     @iOSXCUITFindBy(accessibility = "login-title")
     private MobileElement title;

@@ -2,15 +2,28 @@
 
 ## Project structure
 - `src/main`
-  - `java/com/testlio/lib` - Testlio framework (will be moved to external JAR)
   - `java/com/testlio/pages` - package with all Page Object Models to be implemented
-  - `resources` - related project configuration files (Logback, Allure, AspectJ)
+  - `resources` - related project configuration files (i.e. Allure properties)
 - `src/test`
   - `java/com/testlio/constants` - package for constants related to test classes
   - `java/com/testlio/tests` - package for classes describing test cases
   - `resources` - configuration files related to tests:
     - `credentials.properties` - app credentials config
     - `testng.xml` -  tests configuration to be executed when running them locally or on Testlio platform
+
+## Install Testlio framework
+To create a test script compatible with Testlio platform you have to use our framework, containing all the supported libraries by our engine. You can find a JAR library with the Testlio framework in the parent directory. 
+
+In order to use it, you have to install it to the local Maven repository:
+```shell
+mvn install:install-file \
+   -Dfile=../java-automation-framework-1.0-jar-with-dependencies.jar \
+   -DgroupId=com.testlio \
+   -DartifactId=java-automation-framework \
+   -Dversion=1.0 \
+   -Dpackaging=jar \
+   -DgeneratePom=true
+```
 
 ## Run tests locally
 
