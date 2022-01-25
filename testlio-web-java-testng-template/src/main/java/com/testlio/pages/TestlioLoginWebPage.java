@@ -3,7 +3,7 @@ package com.testlio.pages;
 import com.testlio.lib.pagefactory.WebPage;
 import com.testlio.lib.utility.screenshot.annotations.MakeScreenshot;
 import io.qameta.allure.Step;
-//import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +15,7 @@ import static com.testlio.lib.pagefactory.TestlioPageFactory.initWebElements;
 /**
  * This class represents Testlio platform login page
  */
-//@Slf4j
+@Slf4j
 public class TestlioLoginWebPage extends WebPage {
 
     // Attribute describing Email input

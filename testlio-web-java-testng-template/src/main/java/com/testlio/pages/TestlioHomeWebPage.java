@@ -1,14 +1,14 @@
 package com.testlio.pages;
 
 import com.testlio.lib.pagefactory.WebPage;
-//import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.function.Function;
 
-// @Slf4j
+@Slf4j
 public class TestlioHomeWebPage extends WebPage {
 
     @FindBy(xpath = "//a[@id='testlio-header-logo']")
