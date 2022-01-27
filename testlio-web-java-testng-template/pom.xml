@@ -10,242 +10,42 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>yyyy-MM-dd-HH-mm-ss</maven.build.timestamp.format>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
-        <selenium.version>3.141.59</selenium.version>
-        <webdrivermanager.version>5.0.3</webdrivermanager.version>
-        <appium.version>7.6.0</appium.version>
-        <testng.version>7.0.0</testng.version>
-        <ashot.version>1.5.4</ashot.version>
-
-        <logback.version>1.2.3</logback.version>
-        <slf4j.version>1.7.25</slf4j.version>
-
-        <qatools.version>1.6</qatools.version>
-
-        <!-- plugins versions -->
-        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
-        <java.compiler.version>1.8</java.compiler.version>
-        <aspectj.java.compiler.version>1.8</aspectj.java.compiler.version>
-        <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
-
-        <!--Allure properties -->
-        <allure.version>2.12.1</allure.version>
+        <!-- Allure properties -->
         <allure.plugin.version>2.10.0</allure.plugin.version>
-
         <allure.results>${project.build.directory}/allure-report-results</allure.results>
         <allure.html.folder.name>html-test-report</allure.html.folder.name>
 
-        <assertj.version>3.9.1</assertj.version>
-
+        <!-- Frameworks versions -->
+        <testlio.framework.version>1.0</testlio.framework.version>
+        <testng.version>7.0.0</testng.version>
         <aspectj.version>1.9.5</aspectj.version>
-        <aspectj.maven.plugin.version>1.11.1</aspectj.maven.plugin.version>
 
-        <vavr.version>0.9.2</vavr.version>
-        <lombok.version>1.18.4</lombok.version>
-
-        <okhttp.version>2.7.5</okhttp.version>
-        <apache.commons.version>3.12.0</apache.commons.version>
-        <commons-csv.version>1.6</commons-csv.version>
-
-        <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
-
-        <sikulix.version>1.1.2</sikulix.version>
-        <net.itarray.version>2.2.2</net.itarray.version>
-        <tess4j.version>4.5.4</tess4j.version>
-        <guava.version>23.0</guava.version>
-        <jaxb-api.version>2.3.0</jaxb-api.version>
-        <commons-validator.version>1.4.1</commons-validator.version>
-        <cglib.verssion>3.2.6</cglib.verssion>
-        <javax.activation-api.version>1.2.0</javax.activation-api.version>
+        <!-- Plugins versions -->
+        <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
+        <maven.install.plugin.version>3.0.0-M1</maven.install.plugin.version>
+        <maven.jar.plugin.version>3.2.2</maven.jar.plugin.version>
+        <maven.dependency.plugin>3.2.0</maven.dependency.plugin>
+        <maven.assembly.plugin>3.3.0</maven.assembly.plugin>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
+            <groupId>com.testlio</groupId>
+            <artifactId>java-automation-framework</artifactId>
+            <version>${testlio.framework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-server</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>${appium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ru.yandex.qatools.ashot</groupId>
-            <artifactId>ashot</artifactId>
-            <version>${ashot.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ru.yandex.qatools.properties</groupId>
-            <artifactId>properties-loader</artifactId>
-            <version>${qatools.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-collections</groupId>
-                    <artifactId>commons-collections</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.sikulix</groupId>
-            <artifactId>sikulixapi</artifactId>
-            <version>${sikulix.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.github.vidstige</groupId>
-                    <artifactId>jadb</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-nop</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sikulix</groupId>
-                    <artifactId>sikulix2tigervnc</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${apache.commons.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.itarray</groupId>
-            <artifactId>automotion</artifactId>
-            <version>${net.itarray.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>net.sourceforge.tess4j</groupId>
-            <artifactId>tess4j</artifactId>
-            <version>${tess4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-validator</groupId>
-            <artifactId>commons-validator</artifactId>
-            <version>${commons-validator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>${cglib.verssion}</version>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>com.github.m50d</groupId>
-                <artifactId>aspectj-maven-plugin</artifactId>
-                <version>${aspectj.maven.plugin.version}</version>
-                <configuration>
-
-                    <showWeaveInfo/>
-                    <forceAjcCompile>true</forceAjcCompile>
-                    <sources/>
-                    <weaveDirectories>
-                        <!-- <weaveDirectory>${project.build.directory}/classes</weaveDirectory> -->
-                        <weaveDirectory>${project.build.directory}/unwoven-classe</weaveDirectory>
-                    </weaveDirectories>
-
-                    <sources>
-                        <source>
-                            <basedir>src/main/java</basedir>
-                            <includes>
-                                <include>**/*.aj</include>
-                            </includes>
-                        </source>
-                    </sources>
-                    <outxml>false</outxml>
-                    <verbose>false</verbose>
-                    <complianceLevel>${aspectj.java.compiler.version}</complianceLevel>
-                    <source>${aspectj.java.compiler.version}</source>
-                    <target>${aspectj.java.compiler.version}</target>
-                    <showWeaveInfo>false</showWeaveInfo>
-                    <Xlint>adviceDidNotMatch=ignore,noGuardForLazyTjp=ignore</Xlint>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
-                <configuration>
-                    <source>${java.compiler.version}</source>
-                    <target>${java.compiler.version}</target>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -255,7 +55,6 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
@@ -293,7 +92,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
@@ -303,11 +101,10 @@
                     <reportDirectory>${project.build.directory}/${allure.html.folder.name}</reportDirectory>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
+                <version>${maven.jar.plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -316,11 +113,10 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
+                <version>${maven.dependency.plugin}</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
@@ -334,10 +130,9 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.5.4</version>
+                <version>${maven.assembly.plugin}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>

@@ -3,3 +3,4 @@
 *.iml
 .DS_Store
 src/test/resources/credentials.properties
+java-automation-framework-*.jar
