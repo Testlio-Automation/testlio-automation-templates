@@ -20,10 +20,10 @@ To create a test script compatible with Testlio platform you have to use our fra
 In order to use it, you have to install it to the local Maven repository:
 ```shell
 mvn install:install-file \
-   -Dfile=../java-automation-framework-1.0-jar-with-dependencies.jar \
+   -Dfile=../java-automation-framework-1.1-jar-with-dependencies.jar \
    -DgroupId=com.testlio \
    -DartifactId=java-automation-framework \
-   -Dversion=1.0 \
+   -Dversion=1.1 \
    -Dpackaging=jar \
    -DgeneratePom=true
 ```
