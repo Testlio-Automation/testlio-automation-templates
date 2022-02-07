@@ -1,0 +1,58 @@
+dist
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Testing
+.nyc_output
+junit/
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variables file
+*.env
+
+# OS X
+.DS_Store
+
+# idea
+.idea/*
+!/.idea/runConfigurations
+
+# vscode
+.vscode/*
+!/.vscode/launch.json
+
+# Test packages
+*.zip
+
+# Allure
+allure-results/
+
+# Local Appium desired capabilites
+appium.local.capapilities.config.ts

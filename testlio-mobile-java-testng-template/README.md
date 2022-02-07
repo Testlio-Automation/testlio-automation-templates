@@ -1,4 +1,4 @@
-# Automated Android App Testing using Java with Selenium, Appium and TestNG
+# Automated Mobile App Testing using Java with Selenium, Appium and TestNG
 
 ## Project structure
 - `src/main`
