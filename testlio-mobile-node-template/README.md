@@ -9,26 +9,30 @@
 - `wdio.testlio.conf.ts` - WebdriverIO config for test execution on Testlio platform (please do not change it)
 
 ## Run tests locally
-1.  Set your Appium desired capabilities to `wdio.local.conf.ts`:
-```js
-{
-  capabilities: [
+1. Install the dependencies:
+   ```shell
+   npm install
+   ```
+2.  Set your Appium desired capabilities to `wdio.local.conf.ts`:
+    ```js
     {
-      platformName: '<put your value here>', // Android or iOS
-      platformVersion: '<put your value here>', // Device OS version
-      app: '<put your value here>', // Absolute local path to the app under test
-      deviceName: '<put your value here>', // 
-      automationName: '<put your value here>', // UiAutomator2, XCUITest or other
-      autoGrantPermissions: true // For Android only
+      capabilities: [
+        {
+          platformName: '<put your value here>', // Android or iOS
+          platformVersion: '<put your value here>', // Device OS version
+          app: '<put your value here>', // Absolute local path to the app under test
+          deviceName: '<put your value here>', // 
+          automationName: '<put your value here>', // UiAutomator2, XCUITest or other
+          autoGrantPermissions: true // For Android only
+        }
+      ]
     }
-  ]
-}
-```
+    ```
 
-2. Run the tests:
-```bash 
-npm run test-local
-```
+3. Run the tests:
+    ```bash 
+    npm run test-local
+    ```
 
 ## Creating test package
 ```bash 
