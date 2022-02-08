@@ -10,9 +10,6 @@
   - `resources` - configuration files related to tests:
     - `credentials.properties` - app credentials config
     - `testng.xml` -  tests configuration to be executed when running them locally or on Testlio platform
-  - `testlio-sample-mobile-app.apk` - Sample Android application to be used with the test examples
-  - `testlio-sample-mobile-app.ipa` - Sample native iOS application to be used with the test examples (to be installed on the real device)
-  - `testlio-sample-mobile-app.app` - Sample x86-compatible iOS application to be used with the test examples (to be installed on the simulator)
 
 ## Install Testlio framework
 To create a test script compatible with Testlio platform you have to use our framework, containing all the supported libraries by our engine. You can find a JAR library with the Testlio framework in the parent directory.
