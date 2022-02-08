@@ -15,10 +15,6 @@ describe('When on login screen', () => {
         loginScreen = <TestlioLoginScreen> await staticPageScreen.goToLoginScreenTab();
     });
 
-    after(async() => {
-        //driver.closeApp()
-    });
-
     it('Checks that can login with correct credentials', async() => {
         await loginScreen.inputUsername(config.username);
         await loginScreen.inputPassword(config.password);

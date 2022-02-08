@@ -1,4 +1,4 @@
-# Automated Mobile App Testing using Javascript with Typescript, Appium and Webdriverio
+# Automated Mobile App Testing using Javascript with Typescript, Appium and WebdriverIO
 
 ## Project structure
 - `lib` - components of the Testlio common components (to be moved to the separate library)

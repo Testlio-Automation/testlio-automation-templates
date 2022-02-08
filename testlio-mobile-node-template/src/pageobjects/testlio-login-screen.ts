@@ -5,22 +5,18 @@ import MobileScreen from "../../lib/mobile-screen";
 
 export default class TestlioLoginScreen extends MobileScreen {
 
-    // @ts-ignore
     public get title(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
         return this.driver.$("//*[@resource-id='login-title']");
     }
 
-    // @ts-ignore
     public get usernameInput(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
         return this.driver.$("//android.widget.EditText[contains(@text, 'Username')]");
     }
 
-    // @ts-ignore
     public get passwordInput(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
         return this.driver.$("//android.widget.EditText[contains(@text, 'Password')]");
     }
 
-    // @ts-ignore
     public get loginButton(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
         return this.driver.$("//*[@resource-id='login-button']");
     }

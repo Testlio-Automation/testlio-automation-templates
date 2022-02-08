@@ -4,7 +4,6 @@ import {ChainablePromiseElement} from "webdriverio";
 
 export default class AlertPopup extends MobileScreen {
 
-    // @ts-ignore
     public get title(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
         return this.driver.$("id=android:id/alertTitle");
     }

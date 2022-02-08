@@ -5,12 +5,10 @@ import TestlioLoginScreen from "./testlio-login-screen";
 
 export default class TestlioStaticPageScreen extends MobileScreen {
 
-    // @ts-ignore
     public get title(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
         return this.driver.$("//*[@resource-id='static-page-title']");
     }
 
-    // @ts-ignore
     public get loginTab(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
         return this.driver.$("//*[@resource-id='login-tab']");
     }
