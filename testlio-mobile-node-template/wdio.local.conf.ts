@@ -82,14 +82,16 @@ export const config: WebdriverIO.Config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        platformName: '',
-        platformVersion: '',
-        app: '',
-        deviceName: '',
-        automationName: '',
-        autoGrantPermissions: true
-    }],
+    capabilities: [
+        {
+            platformName: '<put your value here>', // Android or iOS
+            platformVersion: '<put your value here>', // Device OS version
+            app: '<put your value here>', // Absolute local path to the app under test
+            deviceName: '<put your value here>', //
+            automationName: '<put your value here>', // UiAutomator2, XCUITest or other
+            autoGrantPermissions: true // For Android only
+        }
+    ],
     //
     // ===================
     // Test Configurations

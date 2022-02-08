@@ -35,21 +35,20 @@
   },
   "bundledDependencies": [
     "@types/chai",
-    "@types/node",
-    "@wdio/allure-reporter",
     "@wdio/appium-service",
-    "@wdio/cli",
+    "@wdio/allure-reporter",
     "@wdio/local-runner",
     "@wdio/mocha-framework",
+    "@wdio/cli",
     "@wdio/types",
     "appium-uiautomator2-driver",
+    "wdio-appium-service",
+    "wdio-wait-for",
+    "webdriverio",
     "chai",
     "dotenv",
     "ts-node",
     "tsconfig-paths",
-    "typescript",
-    "wdio-appium-service",
-    "wdio-wait-for",
-    "webdriverio"
+    "typescript"
   ]
 }

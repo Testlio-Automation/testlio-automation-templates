@@ -1,4 +1,5 @@
 dist
+*.js
 
 # Logs
 logs
@@ -53,6 +54,3 @@ jspm_packages/
 
 # Allure
 allure-results/
-
-# Local Appium desired capabilites
-appium.local.capapilities.config.ts
