@@ -12,6 +12,8 @@ phases:
       - echo "Navigate to test package directory"
       - cd $DEVICEFARM_TEST_PACKAGE_PATH
       - npm install *.tgz
+      - echo "Installing wdio globally"
+      - npm install -g webdriverio @wdio/cli
       # This test execution environment uses Appium version 1.9.1 by default, however we enable you to change it using the Appium version manager (avm). An
       # example "avm" command below changes the version to 1.14.2.
       # For your convenience, we have preinstalled the following versions: 1.9.1, 1.10.1, 1.11.1, 1.12.1, 1.13.0, 1.14.1, 1.14.2, 1.15.1 or 1.16.0.

@@ -5,13 +5,13 @@
   "scripts": {
     "test": "wdio",
     "test-local": "npm test wdio.local.conf.ts",
-    "test-testlio": "./node_modules/@wdio/cli/bin/wdio.js ../wdio.testlio.conf.js",
+    "test-testlio": "./node_modules/@wdio/cli/bin/wdio.js wdio.testlio.conf.js",
     "prepack": "tsc",
     "package": "npm install && npx npm-bundle && zip -r $npm_package_name-package-$(date +\"%Y-%m-%d-%H-%M-%S\").zip *.tgz && rm *.tgz"
   },
   "author": "",
-  "license": "Apache-2.0",
-  "homepage": "https://github.com/Testlio/testlio-automation-templates/tree/main/testlio-mobile-node-template#readme",
+  "license": "ISC",
+  "homepage": "https://github.com/Testlio/testlio-platform-automation#readme",
   "dependencies": {
     "@types/chai": "^4.2.22",
     "@wdio/appium-service": "^7.16.14",
