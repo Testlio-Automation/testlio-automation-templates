@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import java.util.ResourceBundle;
 
-import static com.testlio.constants.WebAppUrls.PLATFORM_TESTLIO_QA;
+import static com.testlio.constants.WebAppUrls.PLATFORM_TESTLIO_URL;
 
 /**
  * Before running/packaging this test, ensure,
@@ -32,7 +32,7 @@ public class TestlioLoginTest extends BaseTest {
         // Navigate to the initial web application page - TestlioLoginWebPage
         TestlioLoginWebPage testlioLoginWebPage =
                 (new TestlioLoginWebPage(getWebDriver()))
-                        .navigateTo(PLATFORM_TESTLIO_QA, TestlioLoginWebPage.class);
+                        .navigateTo(PLATFORM_TESTLIO_URL, TestlioLoginWebPage.class);
 
         // Input user's email address
         testlioLoginWebPage.inputEmail(userEmail);
