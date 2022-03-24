@@ -21,6 +21,7 @@ describe('When on login screen', () => {
         await loginScreen.inputUsername(config.username);
         await loginScreen.inputPassword(config.password);
         allureReporter.endStep();
+
         const alertPopup: AlertPopup = await loginScreen.clickLogin();
         const alertTitle = await alertPopup.getTitleString();
         expect(alertTitle).to.equal(SUCCESSFUL_LOGIN_ALERT_TITLE);
