@@ -18,7 +18,6 @@ export const config: WebdriverIO.Config = {
     // If you need to configure how ts-node runs please use the
     // environment variables for ts-node or use wdio config's autoCompileOpts section.
     //
-    runner: 'local',
 
     autoCompileOpts: {
         autoCompile: true,
@@ -38,7 +37,6 @@ export const config: WebdriverIO.Config = {
     },
 
     port: 4723,
-    path: '/wd/hub',
     //
     // ==================
     // Specify Test Files
@@ -84,7 +82,16 @@ export const config: WebdriverIO.Config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{}],
+    capabilities: [
+        {
+            platformName: '<put your value here>', // Android or iOS
+            platformVersion: '<put your value here>', // Device OS version
+            app: '<put your value here>', // Absolute local path to the app under test
+            deviceName: '<put your value here>', //
+            automationName: '<put your value here>', // UiAutomator2, XCUITest or other
+            autoGrantPermissions: true // For Android only
+        }
+    ],
     //
     // ===================
     // Test Configurations
@@ -112,6 +119,12 @@ export const config: WebdriverIO.Config = {
     // bail (default is 0 - don't bail, run all tests).
     bail: 0,
     //
+    // Set a base URL in order to shorten url command calls. If your `url` parameter starts
+    // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
+    // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
+    // gets prepended directly.
+    baseUrl: 'http://localhost',
+    //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
     //
@@ -120,13 +133,17 @@ export const config: WebdriverIO.Config = {
     connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 10,
+    connectionRetryCount: 3,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [],
+    services: [['appium', {
+        args: {
+            basePath: '/wd/hub',
+        }
+    }]],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -150,8 +167,9 @@ export const config: WebdriverIO.Config = {
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: [['allure', {
         disableWebdriverStepsReporting: true,
-        outputDir: process.env.ALLURE_RESULTS_DIR
+        outputDir: 'allure-results'
     }]],
+
 
 
 

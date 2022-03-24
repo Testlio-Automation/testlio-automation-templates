@@ -150,7 +150,7 @@ export const config: WebdriverIO.Config = {
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: [['allure', {
         disableWebdriverStepsReporting: true,
-        outputDir: process.env.ALLURE_RESULTS_DIR
+        outputDir: 'allure-results'
     }]],
 
 

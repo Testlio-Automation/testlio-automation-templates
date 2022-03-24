@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "types": [
+            "node",
+            "webdriverio/async",
+            "@wdio/mocha-framework",
+            "expect-webdriverio"
+        ],
+        "target": "ES5"
+    }
+}

@@ -2,7 +2,6 @@ import {WebdriverIO} from "@wdio/types/build/Options";
 import {ChainablePromiseElement} from "webdriverio";
 import AlertPopup from "./alert-popup";
 import MobileScreen from "../../lib/mobile-screen";
-import allureReporter from '@wdio/allure-reporter'
 
 export default class TestlioLoginScreen extends MobileScreen {
 
@@ -27,23 +26,15 @@ export default class TestlioLoginScreen extends MobileScreen {
     }
 
     public async inputUsername(username: string) {
-        allureReporter.startStep('Input username');
-        allureReporter.addArgument('username', username);
         await this.usernameInput.setValue(username);
-        allureReporter.endStep();
     }
 
     public async inputPassword(password: string) {
-        allureReporter.startStep('Input password');
         await this.passwordInput.setValue(password);
-        allureReporter.endStep();
     }
 
     public async clickLogin(): Promise<AlertPopup> {
-        allureReporter.startStep('Click Login button');
         await this.loginButton.click();
-        const page = <AlertPopup> await this.waitForPageToLoad(new AlertPopup(this.driver));
-        allureReporter.endStep();
-        return page;
+        return <AlertPopup> await this.waitForPageToLoad(new AlertPopup(this.driver));
     }
 }
