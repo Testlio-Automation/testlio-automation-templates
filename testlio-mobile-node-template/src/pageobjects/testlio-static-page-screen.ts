@@ -2,6 +2,7 @@ import {WebdriverIO} from "@wdio/types/build/Options";
 import {ChainablePromiseElement} from "webdriverio";
 import MobileScreen from "../../lib/mobile-screen";
 import TestlioLoginScreen from "./testlio-login-screen";
+import allureReporter from "@wdio/allure-reporter";
 
 export default class TestlioStaticPageScreen extends MobileScreen {
 
@@ -17,8 +18,11 @@ export default class TestlioStaticPageScreen extends MobileScreen {
         return this.title.isDisplayed;
     }
 
-    public async goToLoginScreenTab(): Promise<MobileScreen> {
+    public async goToLoginScreenTab(): Promise<TestlioLoginScreen> {
+        allureReporter.startStep('Navigate to the Login Screen tab');
         await this.loginTab.click();
-        return this.waitForPageToLoad(new TestlioLoginScreen(this.driver));
+        const page = <TestlioLoginScreen> await this.waitForPageToLoad(new TestlioLoginScreen(this.driver));
+        allureReporter.endStep();
+        return page;
     }
 }

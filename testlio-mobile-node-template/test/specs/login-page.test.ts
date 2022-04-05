@@ -4,6 +4,7 @@ import TestlioStaticPageScreen from '../../src/pageobjects/testlio-static-page-s
 import { config } from '../../config';
 import TestlioLoginScreen from "../../src/pageobjects/testlio-login-screen";
 import AlertPopup from "../../src/pageobjects/alert-popup";
+import allureReporter from '@wdio/allure-reporter'
 
 const SUCCESSFUL_LOGIN_ALERT_TITLE = 'Successful login';
 
@@ -23,6 +24,8 @@ describe('When on login screen', () => {
         allureReporter.startStep('Input Credentials');
         await loginScreen.inputUsername(config.username);
         await loginScreen.inputPassword(config.password);
+        allureReporter.endStep();
+
         const alertPopup: AlertPopup = await loginScreen.clickLogin();
         const alertTitle = await alertPopup.getTitleString();
         expect(alertTitle).to.equal(SUCCESSFUL_LOGIN_ALERT_TITLE);
