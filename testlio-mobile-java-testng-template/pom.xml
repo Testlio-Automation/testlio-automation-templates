@@ -19,7 +19,7 @@
         <allure.html.folder.name>html-test-report</allure.html.folder.name>
 
         <!-- Frameworks versions -->
-        <testlio.framework.version>1.1</testlio.framework.version>
+        <testlio.framework.version>1.2</testlio.framework.version>
         <testng.version>7.0.0</testng.version>
         <aspectj.version>1.9.5</aspectj.version>
 
