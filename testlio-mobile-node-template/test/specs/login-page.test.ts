@@ -16,6 +16,11 @@ describe('When on login screen', () => {
     });
 
     it('Checks that can login with correct credentials', async() => {
+        allureReporter.addLabel(
+            'testlioManualTestID',
+            '636aad07-dbdc-419e-92d6-0d432c07895c'
+        );
+        allureReporter.startStep('Input Credentials');
         await loginScreen.inputUsername(config.username);
         await loginScreen.inputPassword(config.password);
         const alertPopup: AlertPopup = await loginScreen.clickLogin();

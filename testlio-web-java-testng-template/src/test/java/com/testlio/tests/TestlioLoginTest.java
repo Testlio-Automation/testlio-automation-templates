@@ -2,11 +2,14 @@ package com.testlio.tests;
 
 import com.testlio.lib.BaseTest;
 import com.testlio.pages.TestlioLoginWebPage;
+import io.qameta.allure.AllureLifecycle;
+import io.qameta.allure.model.Label;
 import org.testng.annotations.Test;
 
 import java.util.ResourceBundle;
 
 import static com.testlio.constants.WebAppUrls.PLATFORM_TESTLIO_URL;
+import static io.qameta.allure.Allure.getLifecycle;
 
 /**
  * Before running/packaging this test, ensure,
@@ -24,6 +27,11 @@ public class TestlioLoginTest extends BaseTest {
      */
     @Test
     public void testlioLoginTest() {
+        Label label = new Label();
+        label.setName("testlioManualTestID");
+        label.setValue("636aad07-dbdc-419e-92d6-0d432c07895c");
+        getLifecycle().updateTestCase(testResult -> testResult.getLabels().add(label));
+
         // Read credentials from properties file
         ResourceBundle credentials = ResourceBundle.getBundle("credentials");
         String userEmail = credentials.getString("user.email");
