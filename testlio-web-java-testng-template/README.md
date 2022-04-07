@@ -12,15 +12,15 @@
     - `testng.xml` -  tests configuration to be executed when running them locally or on Testlio platform
 
 ## Install Testlio framework
-To create a test script compatible with Testlio platform you have to use our framework, containing all the supported libraries by our engine. You can find a JAR library with the Testlio framework in the parent directory. 
+To create a test script compatible with Testlio platform you have to use our framework, containing all the supported libraries by our engine. You can find a JAR library with the Testlio framework in the parent directory.
 
 In order to use it, you have to install it to the local Maven repository:
 ```shell
 mvn install:install-file \
-   -Dfile=../java-automation-framework-1.1-jar-with-dependencies.jar \
+   -Dfile=../java-automation-framework-1.2-jar-with-dependencies.jar \
    -DgroupId=com.testlio \
    -DartifactId=java-automation-framework \
-   -Dversion=1.1 \
+   -Dversion=1.2 \
    -Dpackaging=jar \
    -DgeneratePom=true
 ```
