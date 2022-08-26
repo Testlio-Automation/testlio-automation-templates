@@ -1,5 +1,4 @@
-import {WebdriverIO} from "@wdio/types/build/Options";
-import {ChainablePromiseElement} from "webdriverio";
+import { ChainablePromiseElement } from "webdriverio";
 import AlertPopup from "./alert-popup";
 import MobileScreen from "../../lib/mobile-screen";
 import allureReporter from "@wdio/allure-reporter";
@@ -22,7 +21,7 @@ export default class TestlioLoginScreen extends MobileScreen {
         return this.driver.$("//*[@resource-id='login-button']");
     }
 
-    public isPageLoaded(): any {
+    public isPageLoaded(): () => Promise<boolean> {
         return this.title.isDisplayed;
     }
 

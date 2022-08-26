@@ -1,6 +1,5 @@
 import MobileScreen from "../../lib/mobile-screen";
-import {WebdriverIO} from "@wdio/types/build/Options";
-import {ChainablePromiseElement} from "webdriverio";
+import { ChainablePromiseElement } from "webdriverio";
 
 export default class AlertPopup extends MobileScreen {
 
@@ -8,7 +7,7 @@ export default class AlertPopup extends MobileScreen {
         return this.driver.$("id=android:id/alertTitle");
     }
 
-    public isPageLoaded(): any {
+    public isPageLoaded(): () => Promise<boolean> {
         return this.title.isDisplayed;
     }
 

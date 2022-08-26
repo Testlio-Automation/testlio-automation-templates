@@ -1,5 +1,4 @@
-import {WebdriverIO} from "@wdio/types/build/Options";
-import {ChainablePromiseElement} from "webdriverio";
+import { ChainablePromiseElement } from "webdriverio";
 import MobileScreen from "../../lib/mobile-screen";
 import TestlioLoginScreen from "./testlio-login-screen";
 import allureReporter from "@wdio/allure-reporter";
@@ -14,7 +13,7 @@ export default class TestlioStaticPageScreen extends MobileScreen {
         return this.driver.$("//*[@resource-id='login-tab']");
     }
 
-    public isPageLoaded(): any {
+    public isPageLoaded(): () => Promise<boolean> {
         return this.title.isDisplayed;
     }
 

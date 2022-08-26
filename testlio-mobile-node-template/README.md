@@ -1,6 +1,7 @@
 # Automated Mobile App Testing using Javascript with Typescript, Appium and WebdriverIO
 
 ## Project structure
+
 - `lib` - components of the Testlio common components (to be moved to the separate library)
 - `src/pageobjects` - package with all Page Object Models to be implemented
 - `test/specs` - package for modules describing test cases
@@ -9,11 +10,15 @@
 - `wdio.testlio.conf.ts` - WebdriverIO config for test execution on Testlio platform (please do not change it)
 
 ## Run tests locally
+
 1. Install the dependencies:
+
    ```shell
    npm install
    ```
-2.  Set your Appium desired capabilities to `wdio.local.conf.ts`:
+
+2. Set your Appium desired capabilities to `wdio.local.conf.ts`:
+
     ```js
     {
       capabilities: [
@@ -30,11 +35,13 @@
     ```
 
 3. Run the tests:
-    ```bash 
+
+    ```bash
     npm run test-local
     ```
 
 ## Creating test package
-```bash 
+
+```bash
 npm run package
 ```

@@ -1,5 +1,3 @@
-import { WebdriverIO } from "@wdio/types/build/Options";
-
 export default abstract class MobileScreen {
 
     public driver: WebdriverIO.Browser;
@@ -8,7 +6,7 @@ export default abstract class MobileScreen {
         this.driver = driver;
     }
 
-    abstract isPageLoaded(): any;
+    abstract isPageLoaded(): () => Promise<boolean>;
 
     public async waitForPageToLoad(screen: MobileScreen): Promise<MobileScreen> {
         await this.driver.waitUntil(
