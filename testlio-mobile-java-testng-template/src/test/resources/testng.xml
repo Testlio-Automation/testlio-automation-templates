@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Default Suite">
-    <test name="test">
+    <test name="Testlio Sample Suite">
         <classes>
             <class name="com.testlio.tests.TestlioLoginTest"/>
+            <class name="com.testlio.tests.TestlioFailureTest"/>
+            <class name="com.testlio.tests.TestlioErrorTest"/>
+            <class name="com.testlio.tests.TestlioCommonProblemTest"/>
         </classes>
     </test>
 </suite>

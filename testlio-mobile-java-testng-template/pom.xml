@@ -12,6 +12,7 @@
         <maven.build.timestamp.format>yyyy-MM-dd-HH-mm-ss</maven.build.timestamp.format>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.failOnError>false</maven.compiler.failOnError>
 
         <!-- Allure properties -->
         <allure.plugin.version>2.10.0</allure.plugin.version>
