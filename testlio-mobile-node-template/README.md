@@ -9,6 +9,13 @@
 - `wdio.local.conf.ts` - WebdriverIO config for local test execution
 - `wdio.testlio.conf.ts` - WebdriverIO config for test execution on Testlio platform (please do not change it)
 
+## Run tests
+Add the login credentials to `config.ts` file from `Android Testlio Mobile Login Sample App` in 1pass as follows:
+```bash 
+username=<username>
+password=<password>
+```
+
 ## Run tests locally
 
 1. Install the dependencies:

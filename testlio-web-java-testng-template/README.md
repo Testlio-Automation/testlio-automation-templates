@@ -25,8 +25,14 @@ mvn install:install-file \
    -DgeneratePom=true
 ```
 
-## Run tests locally
+## Run tests
+Create a `credentials.properties` file in the directory `src/test/resources` with the values from `Android Testlio Mobile Login Sample App` in 1pass as follows:
+ ```bash
+ user.username=<username>
+ user.password=<password>
+ ```
 
+## Run tests locally
 ### Desktop
 ```bash 
 mvn clean test \

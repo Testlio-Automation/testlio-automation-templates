@@ -12,14 +12,6 @@ import static com.testlio.constants.MobileAppStrings.SUCCESSFUL_LOGIN_ALERT_TITL
 import static com.testlio.lib.pagefactory.TestlioPageFactory.initMobileElements;
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Before running/packaging this test, ensure,
- * that you created credentials.properties file
- * in directory src/test/resources with following content:
- *
- * user.username=testlio
- * user.password=lovetesting
- */
 public class TestlioLoginTest extends BaseTest {
 
     /**
