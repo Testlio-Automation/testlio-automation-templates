@@ -1,0 +1,74 @@
+{
+  "extends": "tslint:recommended",
+  "linterOptions": {
+    "exclude": [
+      "./discovery.json"
+    ]
+  },
+  "rules": {
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "interface-name": true,
+    "class-name": true,
+    "curly": true,
+    "trailing-comma": true,
+    "no-empty": false,
+    "no-null-keyword": true,
+    "max-line-length": [true, 150],
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-whitespace"
+    ],
+    "no-var-keyword": true,
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
+    "semicolon": [
+      true,
+      "always",
+      "ignore-bound-class-methods"
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-type"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      }
+    ],
+    "no-internal-module": true,
+    "no-trailing-whitespace": true,
+    "prefer-const": true,
+    "jsdoc-format": true,
+    "no-var-requires": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "testlio-ott-node-template",
+  "version": "1.0.0",
+  "description": "Testlio OTT app test automation template",
+  "scripts": {
+    "test": "wdio",
+    "test-local": "npm test wdio.local.conf.ts",
+    "test-testlio": "npm test wdio.testlio.conf.ts",
+    "package": "npm install && npx npm-bundle && zip -r $npm_package_name-package-$(date +\"%Y-%m-%d-%H-%M-%S\").zip *.tgz && rm *.tgz"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/Testlio/testlio-automation-templates/tree/main/testlio-mobile-node-template#readme",
+  "dependencies": {
+    "@types/chai": "^4.2.22",
+    "@wdio/appium-service": "^7.16.14",
+    "@wdio/allure-reporter": "^7.16.14",
+    "@wdio/local-runner": "^7.16.14",
+    "@wdio/mocha-framework": "^7.16.14",
+    "@wdio/cli": "^7.16.14",
+    "@wdio/types": "^7.16.14",
+    "appium-uiautomator2-driver": "^2.0.1",
+    "wdio-wait-for": "^2.2.1",
+    "webdriverio": "^7.16.14",
+    "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
+    "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.12.0",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "npm-bundle": "^3.0.3"
+  },
+  "bundledDependencies": [
+    "@types/chai",
+    "@wdio/appium-service",
+    "@wdio/allure-reporter",
+    "@wdio/local-runner",
+    "@wdio/mocha-framework",
+    "@wdio/cli",
+    "@wdio/types",
+    "appium-uiautomator2-driver",
+    "wdio-wait-for",
+    "webdriverio",
+    "chai",
+    "dotenv",
+    "ts-node",
+    "tsconfig-paths",
+    "typescript"
+  ]
+}
