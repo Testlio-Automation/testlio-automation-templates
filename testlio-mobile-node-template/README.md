@@ -48,7 +48,11 @@ password=<password>
     ```
 
 ## Creating test package
-
+1. Specify suite which you want to be executed on platform in `.env` file using `TEST_ARGS` variable. For example:
+```shell
+TEST_ARGS="--suite basic"
+```
+2. Generate the test package:
 ```bash
 npm run package
 ```
