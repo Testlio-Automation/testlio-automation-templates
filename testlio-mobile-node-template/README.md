@@ -4,7 +4,7 @@
 
 - `lib` - components of the Testlio common components (to be moved to the separate library)
 - `src/pageobjects` - package with all Page Object Models to be implemented
-- `test/specs` - package for modules describing test cases
+- `test` - package for modules describing test cases
 - `config.ts` - app variables config
 - `wdio.local.conf.ts` - WebdriverIO config for local test execution
 - `wdio.testlio.conf.ts` - WebdriverIO config for test execution on Testlio platform (please do not change it)
