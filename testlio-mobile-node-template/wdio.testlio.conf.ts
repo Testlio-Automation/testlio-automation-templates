@@ -56,8 +56,13 @@ export const config: WebdriverIO.Config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/*.ts'
+        './test/*.ts'
     ],
+    suites: {
+        login: ['./test/login.spec.ts'],
+        basic: ['./test/basic.spec.ts'],
+        stress: ['./test/stress.spec.ts']
+    },
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'

@@ -5,8 +5,8 @@
   "scripts": {
     "test": "wdio",
     "test-local": "npm test wdio.local.conf.ts",
-    "test-testlio": "npm test wdio.testlio.conf.ts",
-    "package": "npm install && npx npm-bundle && zip -r $npm_package_name-package-$(date +\"%Y-%m-%d-%H-%M-%S\").zip *.tgz && rm *.tgz"
+    "test-testlio": "eval $(grep '^TEST_ARGS' $DEVICEFARM_TEST_PACKAGE_PATH/.env) && npm test wdio.testlio.conf.ts -- $TEST_ARGS",
+    "package": "npm install && npx npm-bundle && zip -r $npm_package_name-package-$(date +\"%Y-%m-%d-%H-%M-%S\").zip *.tgz .env && rm *.tgz"
   },
   "author": "",
   "license": "Apache-2.0",
