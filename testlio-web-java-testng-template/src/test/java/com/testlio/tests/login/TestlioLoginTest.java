@@ -1,4 +1,4 @@
-package com.testlio.tests;
+package com.testlio.tests.login;
 
 import com.testlio.lib.BaseTest;
 import com.testlio.pages.TestlioLoginWebPage;
