@@ -20,12 +20,12 @@ public class CommonProblemsTest extends BaseTest {
 
     private static final CommonProblemDesc[] COMMON_PROBLEMS = {
         new CommonProblemDesc(
-            "LOG_MAXIMUM_SESSION_DURATION_REACHED_SELENIUM_JAVA",
-            "org.openqa.selenium.TimeoutException: The session session_guid has timed out because it has reached maximum session duration of 10000 seconds. Please refer to our documentation for details on how to increase your session duration through a capability."
+            "LOG_APPIUM_SERVER_NEVER_STARTED",
+            "appium server never started in 5 seconds. Exiting"
         ),
         new CommonProblemDesc(
-            "LOG_INVALID_FILE_ARGUMENT_SELENIUM_JAVA",
-            "invalid argument: File not found :"
+            "LOG_DEVICE_WAS_NOT_IN_THE_LIST",
+            "An unknown server-side error occured while processing the command. Original error: Google Nexus was not in the list of connected devices"
         )
     };
 
