@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 
 import java.util.stream.IntStream;
 
-import static com.testlio.lib.builders.TestConfigBuilder.*;
 import static com.testlio.constants.FakeTestConstants.*;
+import static com.testlio.lib.builders.TestConfigBuilder.generateStepsCombination;
 
 public class AllPassedTest extends BaseTest {
     @DataProvider

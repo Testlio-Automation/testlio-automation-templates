@@ -5,7 +5,7 @@ import com.testlio.lib.models.TestConfig;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static com.testlio.lib.builders.TestConfigBuilder.*;
+import static com.testlio.lib.builders.TestConfigBuilder.generateStepWithNestedSteps;
 
 public class ALotOfNestedStepsTest extends BaseTest {
     @DataProvider

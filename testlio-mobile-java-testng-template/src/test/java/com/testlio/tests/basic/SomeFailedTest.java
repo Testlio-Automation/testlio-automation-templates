@@ -1,8 +1,8 @@
 package com.testlio.tests.basic;
 
 import com.testlio.lib.BaseTest;
-import com.testlio.lib.models.TestConfig;
 import com.testlio.lib.models.ResultType;
+import com.testlio.lib.models.TestConfig;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,9 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.testlio.lib.builders.TestConfigBuilder.*;
-
 import static com.testlio.constants.FakeTestConstants.*;
+import static com.testlio.lib.builders.TestConfigBuilder.generateStepsCombination;
 
 public class SomeFailedTest extends BaseTest {
     @DataProvider

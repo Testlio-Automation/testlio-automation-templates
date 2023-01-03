@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static com.testlio.constants.FakeTestConstants.*;
-import static com.testlio.lib.builders.TestConfigBuilder.*;
+import static com.testlio.lib.builders.TestConfigBuilder.generateStepsCombination;
 
 public class SomeErroredTest extends BaseTest {
     @DataProvider
