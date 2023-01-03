@@ -7,8 +7,6 @@
 - `src/test`
   - `java/com/testlio`
     - `constants` - package for constants related to test classes
-    - `lib` - functions and classes helping to build tests
-    - `models` - type entities for tests
     - `tests` - package for classes describing test cases
   - `resources` - configuration files related to tests:
     - `credentials.properties` - app credentials config
@@ -21,10 +19,10 @@ To create a test script compatible with Testlio platform you have to use our fra
 In order to use it, you have to install it to the local Maven repository:
 ```shell
 mvn install:install-file \
-   -Dfile=../java-automation-framework-1.2-jar-with-dependencies.jar \
+   -Dfile=../java-automation-framework-2.0-jar-with-dependencies.jar \
    -DgroupId=com.testlio \
    -DartifactId=java-automation-framework \
-   -Dversion=1.2 \
+   -Dversion=2.0 \
    -Dpackaging=jar \
    -DgeneratePom=true
 ```
