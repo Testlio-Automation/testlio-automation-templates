@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Login Suite">
+    <test name="Testlio Login Test">
+        <classes>
+            <class name="com.testlio.tests.login.TestlioLoginTest"/>
+        </classes>
+    </test>
+</suite>

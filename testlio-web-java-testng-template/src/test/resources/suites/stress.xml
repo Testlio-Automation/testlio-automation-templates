@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Stress Suite">
+    <test name="When suite has a lot of tests">
+        <classes>
+            <class name="com.testlio.tests.stress.ALotOfTestsTest"/>
+        </classes>
+    </test>
+    <test name="When test has a lot of steps">
+        <classes>
+            <class name="com.testlio.tests.stress.ALotOfStepsTest"/>
+        </classes>
+    </test>
+    <test name="When test has a lot of nested steps">
+        <classes>
+            <class name="com.testlio.tests.stress.ALotOfNestedStepsTest"/>
+        </classes>
+    </test>
+    <test name="When test has a lot of labels">
+        <classes>
+            <class name="com.testlio.tests.stress.ALotOfLabelsTest"/>
+        </classes>
+    </test>
+    <test name="When test step has a lot of arguments">
+        <classes>
+            <class name="com.testlio.tests.stress.ALotOfStepArgumentsTest"/>
+        </classes>
+    </test>
+</suite>

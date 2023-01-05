@@ -19,7 +19,7 @@
         <allure.html.folder.name>html-test-report</allure.html.folder.name>
 
         <!-- Frameworks versions -->
-        <testlio.framework.version>1.2</testlio.framework.version>
+        <testlio.framework.version>2.0</testlio.framework.version>
         <testng.version>7.0.0</testng.version>
         <aspectj.version>1.9.5</aspectj.version>
 
@@ -29,6 +29,9 @@
         <maven.jar.plugin.version>3.2.2</maven.jar.plugin.version>
         <maven.dependency.plugin>3.2.0</maven.dependency.plugin>
         <maven.assembly.plugin>3.3.0</maven.assembly.plugin>
+
+        <!-- TestNG suite configuration file to use -->
+        <suite.name>basic</suite.name>
     </properties>
 
     <dependencies>
@@ -58,7 +61,7 @@
                 <configuration>
                     <trimStackTrace>false</trimStackTrace>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/suites/${suite.name}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
@@ -145,7 +148,7 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <finalName>${project.name}-package-${maven.build.timestamp}</finalName>
+                            <finalName>${project.name}-package-${suite.name}-${maven.build.timestamp}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                             <descriptors>
                                 <descriptor>src/main/assembly/zip.xml</descriptor>
