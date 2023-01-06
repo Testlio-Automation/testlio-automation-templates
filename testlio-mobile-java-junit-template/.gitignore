@@ -1,0 +1,5 @@
+/target/
+.idea
+*.iml
+.DS_Store
+src/test/resources/credentials.properties
