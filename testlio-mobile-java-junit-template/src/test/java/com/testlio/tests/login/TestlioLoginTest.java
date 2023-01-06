@@ -1,0 +1,49 @@
+package com.testlio.tests.login;
+
+import com.testlio.lib.BaseTest;
+import com.testlio.pages.AlertPopup;
+import com.testlio.pages.TestlioLoginScreen;
+import com.testlio.pages.TestlioStaticPageScreen;
+import com.testlio.tests.JUnitBaseTest;
+import org.junit.Test;
+
+import java.util.ResourceBundle;
+
+import static com.testlio.constants.MobileAppStrings.SUCCESSFUL_LOGIN_ALERT_TITLE;
+import static com.testlio.lib.pagefactory.TestlioPageFactory.initMobileElements;
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class TestlioLoginTest extends JUnitBaseTest {
+
+    /**
+     * Test case for login view example
+     */
+    @Test
+    public void testlioLoginTest() {
+
+        // Read credentials from properties file
+        ResourceBundle credentials = ResourceBundle.getBundle("credentials");
+        String userUsername = credentials.getString("user.username");
+        String userPassword = credentials.getString("user.password");
+
+        // Initialize the initial application page - TestlioStaticPageScreen
+        TestlioStaticPageScreen testlioStaticPageScreen = initMobileElements(getMobileDriver(), TestlioStaticPageScreen.class);
+
+        // Navigate to the login screen - TestlioLoginScreen
+        TestlioLoginScreen testlioLoginScreen = testlioStaticPageScreen.goToLoginScreenTab();
+
+        // Input user's username
+        testlioLoginScreen.inputUsername(userUsername);
+
+        // Input user's password
+        testlioLoginScreen.inputPassword(userPassword);
+
+        // Click on login button and expect appearing the alert
+        AlertPopup alertPopup = testlioLoginScreen.clickLogin();
+
+        // Check that login is successful
+        assertThat(alertPopup.getTitleString()).isEqualTo(SUCCESSFUL_LOGIN_ALERT_TITLE);
+
+    }
+
+}

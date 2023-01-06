@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Basic Suite">
+    <test name="When all tests in suite passed" junit="true">
+        <classes>
+            <class name="com.testlio.tests.basic.AllPassedTest"/>
+        </classes>
+    </test>
+    <test name="When some tests in suite failed" junit="true">
+        <classes>
+            <class name="com.testlio.tests.basic.SomeFailedTest"/>
+        </classes>
+    </test>
+    <test name="When some tests in suite errored" junit="true">
+        <classes>
+            <class name="com.testlio.tests.basic.SomeErroredTest"/>
+        </classes>
+    </test>
+    <test name="When Testlio manual test ID defined" junit="true">
+        <classes>
+            <class name="com.testlio.tests.basic.WithManualTestIdTest"/>
+        </classes>
+    </test>
+    <test name="When common problems arise" junit="true">
+        <classes>
+            <class name="com.testlio.tests.basic.CommonProblemsTest"/>
+        </classes>
+    </test>
+</suite>
